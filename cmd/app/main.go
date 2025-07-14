@@ -44,10 +44,13 @@ func main() {
 
 	router := chi.NewRouter()
 
-	router.Get("/", page.PageHandler(cache))
+	router.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	router.Get("/", page.PageHandler())
+	router.Get("/order/{order_uid}", page.GetOrderHandler(cache))
 
 	server := &http.Server{
-		Addr:    ":3000",
+		Addr:    ":3002",
 		Handler: router,
 	}
 

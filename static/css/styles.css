@@ -37,3 +37,14 @@
     font-size: 20px;    /* Увеличиваем размер текста */
     padding: 10px;      /* Добавляем отступы внутри поля */
 }
+
+.result-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    color: #333;
+    font-family: monospace;
+    max-width: 800px;
+    word-wrap: break-word;
+}

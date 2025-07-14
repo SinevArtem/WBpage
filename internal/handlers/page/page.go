@@ -5,13 +5,28 @@ import (
 	"net/http"
 
 	"github.com/SinevArtem/WBpage.git/internal/cache"
+	"github.com/go-chi/chi"
 )
 
-func PageHandler(cache *cache.Cache) http.HandlerFunc {
+func PageHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		orders := cache.GetAll()
+
+		http.ServeFile(w, r, "static/templates/index.html")
+
+	}
+}
+
+func GetOrderHandler(cache *cache.Cache) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		orderUID := chi.URLParam(r, "order_uid")
+
+		order, ok := cache.Get(orderUID)
+		if !ok {
+			http.Error(w, "order not found", http.StatusNotFound)
+			return
+		}
 
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(orders)
+		json.NewEncoder(w).Encode(order)
 	}
 }
