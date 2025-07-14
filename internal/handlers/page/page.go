@@ -19,6 +19,10 @@ func PageHandler() http.HandlerFunc {
 func GetOrderHandler(cache *cache.Cache) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		orderUID := chi.URLParam(r, "order_uid")
+		if orderUID == "" {
+			http.Error(w, `{"error": "order_uid is required"}`, http.StatusBadRequest)
+			return
+		}
 
 		order, ok := cache.Get(orderUID)
 		if !ok {
