@@ -1,0 +1,39 @@
+.wrapper{
+    width: 100%;
+    margin: 0 auto; /*центрирование*/
+
+    background-color:blueviolet;
+    display: flex;
+    flex-direction: column;
+    color: aquamarine;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column; 
+
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    
+}
+
+.send-button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width: 120px;
+    height: auto;
+    font-size: 20px;
+}
+
+.input {
+    margin-top: 10px;
+    height: 20px;       /* Увеличиваем высоту */
+    width: 300px;       /* Увеличиваем ширину */
+    font-size: 20px;    /* Увеличиваем размер текста */
+    padding: 10px;      /* Добавляем отступы внутри поля */
+}
